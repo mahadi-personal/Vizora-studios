@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vizora Studios — We Grow Brands</title>
+
+<style>
+/* ── DARK MODE (default) — exact spec ─── */
+:root{
+  --bg:#1E2228;
+  --surface:#1E2228;
+  --surface-raised:#232830;
+  --surface-deep:#181C22;
+  --text:#A3B1C6;
+  --text-muted:#A3B1C6;
+  --text-dim:#5A6478;
+  --white:#E0E5EC;
+  --heading:#E0E5EC;
+  --shadow-neo:6px 6px 12px #13161B,-6px -6px 12px #2A2F38;
+  --shadow-neo-sm:4px 4px 8px #13161B,-4px -4px 8px #2A2F38;
+  --shadow-neo-inset:inset 6px 6px 12px #13161B,inset -6px -6px 12px #2A2F38;
+  --radius-card:16px;
+  --radius-btn:12px;
+}
+/* ── LIGHT MODE — exact spec ─── */
+body.light{
+  --bg:#E0E5EC;
+  --surface:#E0E5EC;
+  --surface-raised:#E0E5EC;
+  --surface-deep:#d4dae6;
+  --text:#4A5568;
+  --text-muted:#4A5568;
+  --text-dim:#8896A5;
+  --white:#2D3748;
+  --heading:#2D3748;
+  --shadow-neo:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;
+  --shadow-neo-sm:3px 3px 8px #A3B1C6,-3px -3px 8px #FFFFFF;
+  --shadow-neo-inset:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;
+}
+
+body.light nav{background:rgba(240,243,248,0.95);backdrop-filter:blur(14px);border-bottom:none;}
+body.light .nav-links a{color:#8896A5;}
+body.light .nav-links a::after{background:#2D3748;}
+body.light .nav-links a:hover{color:#2D3748;}
+body.light .nav-cta{background:#EEF1F6;color:#8896A5;border-radius:9999px;box-shadow:6px 6px 12px #C2C8D2,-6px -6px 12px #FFFFFF;padding:11px 28px;font-size:.85rem;font-weight:400;transition:box-shadow .2s ease,color .2s ease;}
+body.light .nav-cta:hover{box-shadow:inset 6px 6px 12px #C2C8D2,inset -6px -6px 12px #FFFFFF;color:#2D3748;}
+body.light .btn-primary{background:var(--surface);color:var(--heading);box-shadow:var(--shadow-neo);}
+body.light .btn-primary:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+body.light .hero-title{color:var(--heading);}
+body.light #intro-loader{background:#E0E5EC;}
+body.light .contact-btn.primary-contact{background:var(--surface);color:#6C63FF;box-shadow:var(--shadow-neo);}
+body.light .theme-float{border:none;}
+body.light .cta-title .outline{-webkit-text-stroke:1px rgba(45,55,72,.2);}
+body.light .hero-title .outline{-webkit-text-stroke:1px rgba(45,55,72,.2);}
+body.light .section-title{color:var(--heading);}
+body.light .marquee-wrap{background:var(--surface-deep);border:none;}
+/* Dark mode nav bg */
+nav{background:rgba(27,30,37,0.92);border-bottom:none;}
+#intro-loader{background:#1E2228;}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight:400;
+  overflow-x:hidden;
+  cursor:none;
+  transition:background .4s,color .4s;
+}
+.cursor{position:fixed;width:10px;height:10px;background:#ffffff;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:exclusion;}
+body.light .cursor{background:#ffffff;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid #ffffff;border-radius:50%;pointer-events:none;z-index:9998;transition:width .3s,height .3s,margin .3s;mix-blend-mode:exclusion;}
+#intro-loader{position:fixed;inset:0;background:#1E2228;z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity .7s,visibility .7s;}
+#intro-loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+#intro-loader video{width:min(440px,80vw);}
+.nav-logo-video{height:36px;width:auto;display:block;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 56px;background:rgba(27,30,37,0.92);backdrop-filter:blur(14px);border-bottom:none;transition:background .4s;}
+.nav-logo-wrap{display:flex;align-items:center;}
+.nav-center-links{display:flex;justify-content:center;}
+.nav-right-cta{display:flex;justify-content:flex-end;align-items:center;}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:400;letter-spacing:.02em;position:relative;padding-bottom:6px;transition:color .3s ease;}
+.nav-links a::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right center;transition:transform .35s cubic-bezier(.4,0,.2,1);will-change:transform;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left center;}
+.nav-cta{background:rgba(27,30,37,0.92);border:none;color:var(--text-muted);padding:11px 28px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.85rem;font-weight:400;letter-spacing:.02em;cursor:none;border-radius:9999px;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;}
+.nav-cta:hover{box-shadow:var(--shadow-neo-inset);color:#E0E5EC;}
+/* FLOATING THEME TOGGLE */
+.theme-float{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:10px;background:#1D2129;border:none;border-radius:30px;padding:8px 18px 8px 12px;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;cursor:none;transition:box-shadow .2s ease,color .2s ease;}
+.theme-float:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}
+
+.theme-float:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+.theme-toggle{width:44px;height:24px;background:#13161C;border-radius:12px;border:none;position:relative;cursor:none;flex-shrink:0;box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}
+.theme-knob{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#5A6478;display:flex;align-items:center;justify-content:center;font-size:9px;transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+body.light .theme-knob{transform:translateX(20px);}
+.theme-float-label{font-size:.62rem;letter-spacing:.14em;color:#5A6478;transition:color .2s ease;}
+/* HERO */
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero-left{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2;width:100%;max-width:780px;}
+.hero-right{display:none;}
+.hero-logo{width:90px;height:auto;margin-bottom:28px;opacity:0;animation:fadeUp .8s .1s forwards;}
+.hero-title{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(2.6rem,7vw,6.5rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;color:var(--heading);margin-bottom:20px;opacity:0;animation:fadeUp .9s .25s forwards;}
+.hero-sub{max-width:500px;font-size:1rem;font-weight:400;line-height:1.75;color:var(--text-muted);margin-bottom:44px;opacity:0;animation:fadeUp .9s .38s forwards;}
+.hero-ctas{display:flex;align-items:center;gap:24px;justify-content:center;opacity:0;animation:fadeUp .9s .5s forwards;}
+.hero-btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--surface);color:var(--text-dim);border:none;padding:16px 36px;border-radius:var(--radius-btn);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.88rem;font-weight:600;cursor:none;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;text-decoration:none;}
+.hero-btn-primary:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+.hero-btn-showreel{display:inline-flex;align-items:center;gap:14px;background:none;border:none;cursor:none;text-decoration:none;}
+.hero-btn-showreel-icon{width:46px;height:46px;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;font-size:.8rem;color:var(--text-dim);flex-shrink:0;}
+.hero-btn-showreel:hover .hero-btn-showreel-icon{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+.hero-btn-showreel-text{text-align:left;}
+.hero-btn-showreel-label{display:block;font-size:.88rem;font-weight:600;color:var(--text-dim);transition:color .2s ease;}
+.hero-btn-showreel:hover .hero-btn-showreel-label{color:var(--white);}
+.hero-btn-showreel-sub{display:block;font-size:.75rem;color:var(--text-dim);margin-top:2px;}
+/* Neomorphic scroll indicator */
+.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:52px;opacity:0;animation:fadeUp 1s .65s forwards;position:relative;z-index:2;}
+.hero-scroll-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);}
+.neo-scroll{width:32px;height:52px;background:var(--surface);border-radius:16px;box-shadow:var(--shadow-neo-inset);display:flex;align-items:flex-start;justify-content:center;padding-top:7px;}
+.neo-scroll-ball{width:9px;height:9px;background:var(--text-dim);border-radius:50%;box-shadow:var(--shadow-neo-sm);animation:neoScrollBall 1.8s ease-in-out infinite;}
+@keyframes neoScrollBall{0%,100%{transform:translateY(0);opacity:.5;}50%{transform:translateY(24px);opacity:1;}}
+.btn-primary{background:var(--surface);color:var(--text-muted);border:none;padding:15px 38px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.95rem;font-weight:400;cursor:none;border-radius:var(--radius-btn);box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;text-decoration:none;display:inline-block;}
+.btn-primary:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+.btn-ghost{background:none;border:none;color:var(--text-muted);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.75rem;cursor:none;text-decoration:none;display:flex;align-items:center;gap:10px;transition:color .3s;}
+.btn-ghost:hover{color:var(--white);}
+.btn-ghost .arrow{transition:transform .3s;}
+.btn-ghost:hover .arrow{transform:translateX(5px);}
+.marquee-wrap{padding:22px 0;background:var(--surface-deep);overflow:visible;}
+.marquee-track{display:flex;gap:56px;white-space:nowrap;animation:marquee 22s linear infinite;}
+.marquee-item{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.8rem;font-weight:600;letter-spacing:-.02em;color:var(--text-dim);display:flex;align-items:center;gap:56px;flex-shrink:0;}
+.marquee-dot{width:4px;height:4px;background:var(--text-dim);border-radius:50%;}
+section{padding:110px 56px;}
+.section-tag{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}
+.section-title{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--heading);margin-bottom:20px;}
+#services{background:var(--bg);}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;}
+.services-intro{max-width:340px;font-size:.9rem;line-height:1.8;color:var(--text-muted);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+/* ── EMBOSS → DEBOSS HOVER ─────────────────────────────────
+   Default: raised (emboss) = outset shadow
+   Hover:   pressed (deboss) = inset shadow
+   No color change. No glow. No outline. No transform.
+──────────────────────────────────────────────────────────── */
+
+/* SERVICE CARDS */
+.service-card{background:var(--surface);border-radius:16px;padding:40px 32px;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;position:relative;overflow:visible;}
+
+.service-card:hover{box-shadow:var(--shadow-neo-inset);}.service-card:hover .service-name{color:var(--white);}.service-card:hover .service-desc{color:var(--text-muted);}.service-card:hover .service-icon{filter:grayscale(0);}.service-card:hover .service-num{box-shadow:var(--shadow-neo-sm);}.service-card:hover .tag{box-shadow:var(--shadow-neo-sm);color:var(--white);}
+.service-num{width:44px;height:44px;background:var(--surface-deep);border-radius:12px;box-shadow:var(--shadow-neo-inset);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:.82rem;font-weight:700;color:var(--text-dim);}
+.service-icon{font-size:1.8rem;margin-bottom:18px;display:block;filter:grayscale(1);transition:filter .2s ease;}
+.service-name{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;color:var(--text-muted);margin-bottom:12px;transition:color .2s ease;}
+.service-desc{font-size:.82rem;line-height:1.8;color:var(--text-dim);transition:color .2s ease;}
+.service-tags{margin-top:24px;display:flex;flex-wrap:wrap;gap:7px;}
+.tag{font-size:.62rem;letter-spacing:.1em;color:var(--text-muted);background:var(--surface-deep);padding:5px 11px;border-radius:20px;box-shadow:var(--shadow-neo-inset);transition:box-shadow .2s ease,color .2s ease;}.tag:hover{box-shadow:var(--shadow-neo-sm);color:var(--white);}
+
+/* WORK ITEMS */
+
+
+
+
+
+
+
+
+
+
+
+
+.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;}
+.filter-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.filter-btn{background:var(--surface);border:none;color:#6B7A90;padding:10px 24px;border-radius:999px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;cursor:none;box-shadow:var(--shadow-neo-sm);transition:box-shadow .2s ease,color .2s ease;}
+.filter-btn.active,.filter-btn:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;}
+.work-item{background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-neo);cursor:none;transition:box-shadow .3s;}
+.work-item:hover{box-shadow:var(--shadow-neo-inset);}
+.work-item.large{grid-column:span 7;}
+.work-item.small{grid-column:span 5;}
+.work-item.third{grid-column:span 4;}
+.work-thumb{width:100%;aspect-ratio:16/9;background:var(--surface-raised);position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;}
+.work-thumb-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s;filter:grayscale(.35);}
+.work-item:hover .work-thumb-bg{transform:scale(1.03);}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);opacity:0;transition:opacity .3s;}
+.work-item:hover .work-overlay{opacity:1;}
+.play-btn{width:52px;height:52px;background:var(--surface-raised);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:2;backdrop-filter:blur(4px);}
+.work-meta{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;}
+.work-client{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);}
+.work-title{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1rem;font-weight:600;color:var(--white);margin-top:3px;}
+.work-type{font-size:.62rem;letter-spacing:.12em;color:var(--text-dim);background:var(--surface-deep);padding:5px 11px;border-radius:20px;box-shadow:var(--shadow-neo-sm);white-space:nowrap;}
+
+/* CASE CARDS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cases-grid{display:flex;flex-direction:column;gap:28px;margin-top:60px;}
+.case-card{background:var(--surface);border-radius:20px;box-shadow:var(--shadow-neo);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;}
+.case-card:nth-child(even){direction:rtl;}
+.case-card:nth-child(even)>*{direction:ltr;}
+.case-visual{background:var(--bg);min-height:440px;position:relative;display:flex;align-items:center;justify-content:center;overflow:visible;}
+.case-bg-num{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11rem;font-weight:800;color:rgba(255,255,255,.03);position:absolute;line-height:1;user-select:none;}
+.case-metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;z-index:2;padding:32px;}
+.metric-card{background:var(--surface);border-radius:14px;padding:24px 18px;box-shadow:var(--shadow-neo);text-align:center;}
+.metric-val{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:2.2rem;font-weight:700;color:var(--white);line-height:1;}
+.metric-label{font-size:.75rem;letter-spacing:.02em;color:var(--text-muted);margin-top:5px;}
+.case-content{padding:52px 48px;display:flex;flex-direction:column;justify-content:center;}
+.case-brand{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;}
+.case-title{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:2.2rem;font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--white);margin-bottom:22px;}
+.case-body{font-size:.85rem;line-height:1.85;color:var(--text-muted);margin-bottom:26px;}
+.case-results{display:flex;flex-direction:column;gap:11px;margin-bottom:36px;}
+.result-item{display:flex;align-items:flex-start;gap:12px;font-size:.82rem;color:var(--text-muted);}
+.result-dot{width:5px;height:5px;background:var(--white);border-radius:50%;margin-top:7px;flex-shrink:0;}
+
+/* CLIENT CARDS */
+
+
+
+
+
+
+
+
+.clients-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px;margin-bottom:60px;}
+.featured-client-card{background:var(--surface);border-radius:16px;padding:36px 30px;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease;}
+.featured-client-card:hover{box-shadow:var(--shadow-neo-inset);}
+.featured-client-card:hover .fc-logo{color:var(--white);}
+.featured-client-card:hover .fc-quote{color:var(--text-muted);}
+.featured-client-card:hover .fc-stat-val{color:var(--white);}
+.fc-logo{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.2rem;font-weight:700;color:var(--text-muted);margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s ease;}
+.fc-quote{font-size:.82rem;line-height:1.8;color:var(--text-dim);font-style:italic;margin-bottom:22px;transition:color .2s ease;}
+.fc-author{font-size:.65rem;letter-spacing:.14em;color:var(--text-dim);}
+.fc-result{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);display:flex;gap:24px;}
+.fc-stat-val{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.7rem;color:var(--text-muted);line-height:1;transition:color .2s ease;}
+.fc-stat-label{font-size:.58rem;letter-spacing:.12em;color:var(--text-dim);margin-top:3px;}
+.clients-divider{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--text-dim);text-align:center;margin-bottom:40px;}
+.logo-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.logo-card{background:var(--surface);border-radius:12px;padding:26px 18px;box-shadow:var(--shadow-neo-sm);display:flex;align-items:center;justify-content:center;transition:box-shadow .2s ease,color .2s ease;}
+.logo-card:hover{box-shadow:var(--shadow-neo-inset);} .logo-card:hover .logo-text{color:var(--white);}
+.logo-text{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.85rem;font-weight:600;color:var(--text-dim);text-align:center;transition:color .2s ease;}
+
+/* TESTIMONIAL CARDS */
+
+
+
+
+
+
+
+
+
+
+
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px;}
+.testi-card{background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease;}
+.testi-card:hover{box-shadow:var(--shadow-neo-inset);}
+.testi-video{width:100%;aspect-ratio:16/9;background:var(--surface-deep);position:relative;display:flex;align-items:center;justify-content:center;overflow:visible;}
+.testi-video-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(.5);}
+.testi-play{width:52px;height:52px;background:var(--surface-raised);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:2;backdrop-filter:blur(4px);}
+.testi-body{padding:26px 26px;}
+.testi-quote{font-size:.84rem;line-height:1.8;color:var(--text-muted);font-style:italic;margin-bottom:18px;}
+.testi-author{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);}
+.testi-name{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.95rem;font-weight:600;color:var(--white);margin-top:4px;}
+
+/* NEOMORPHIC SCROLL INDICATOR */
+.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:52px;opacity:0;animation:fadeUp 1s .6s forwards;position:relative;z-index:2;}
+.hero-scroll-label{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);}
+.neo-scroll{width:36px;height:60px;background:var(--surface);border-radius:18px;box-shadow:var(--shadow-neo-inset);display:flex;align-items:flex-start;justify-content:center;padding-top:8px;}
+.neo-scroll-ball{width:10px;height:10px;background:var(--text-dim);border-radius:50%;box-shadow:var(--shadow-neo-sm);animation:neoScrollBall 1.8s ease-in-out infinite;}
+@keyframes neoScrollBall{0%,100%{transform:translateY(0);opacity:.6;}50%{transform:translateY(28px);opacity:1;}}
+
+
+
+
+
+
+
+
+
+
+
+.step-num{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:2.5rem;font-weight:800;color:var(--text-dim);line-height:1;margin-bottom:10px;opacity:.2;}
+.step-name{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:10px;}
+.step-desc{font-size:.8rem;line-height:1.8;color:var(--text-muted);}
+
+
+
+
+
+
+
+
+
+
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-photo{background:var(--surface);border-radius:20px;box-shadow:var(--shadow-neo);aspect-ratio:4/5;position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;}
+.about-photo-placeholder{font-size:5rem;opacity:.15;}
+.about-photo-label{position:absolute;bottom:22px;left:22px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);}
+.about-name{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:2.8rem;font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--white);margin-bottom:8px;}
+.about-role{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:26px;}
+.about-bio{font-size:.88rem;line-height:1.85;color:var(--text-muted);margin-bottom:28px;}
+.about-skills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+#cta{background:#181B21;text-align:center;}
+
+
+
+
+.cta-inner{max-width:680px;margin:0 auto;}
+.cta-title{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(3rem,7vw,7rem);font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--white);margin-bottom:24px;}
+.cta-title .outline{-webkit-text-stroke:1px rgba(255,255,255,.18);color:transparent;}
+.cta-sub{font-size:.9rem;line-height:1.8;color:var(--text-muted);margin-bottom:44px;max-width:440px;margin-left:auto;margin-right:auto;}
+.contact-options{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+.contact-btn{background:var(--surface);color:var(--text-muted);padding:14px 28px;border-radius:10px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;box-shadow:var(--shadow-neo-sm);transition:all .3s;text-decoration:none;display:flex;align-items:center;gap:10px;}
+.contact-btn:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+.contact-btn.primary-contact{background:var(--white);color:#111;box-shadow:8px 8px 20px #0a0a0a,-4px -4px 12px #2a2a2a;}
+.contact-btn.primary-contact:hover{box-shadow:4px 4px 12px #0a0a0a,-2px -2px 8px #2a2a2a;}
+footer{background:var(--surface-deep);border-top:1px solid rgba(255,255,255,.04);padding:56px 56px 36px;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;}
+.footer-logo{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:10px;}
+.footer-tagline{font-size:.73rem;color:var(--text-dim);letter-spacing:.07em;max-width:240px;line-height:1.7;}
+.footer-links{display:flex;gap:68px;}
+.footer-col h4{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.footer-col a{font-size:.8rem;color:var(--text-muted);text-decoration:none;transition:color .3s;}
+.footer-col a:hover{color:var(--white);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.04);padding-top:22px;}
+.footer-copy{font-size:.66rem;color:var(--text-dim);letter-spacing:.07em;}
+.footer-socials{display:flex;gap:10px;}
+.social-pill{font-size:.6rem;letter-spacing:.14em;color:var(--text-dim);background:var(--surface);border:1px solid rgba(255,255,255,.05);padding:6px 14px;border-radius:20px;text-decoration:none;box-shadow:var(--shadow-neo-sm);transition:all .3s;}
+.social-pill:hover{color:var(--white);box-shadow:var(--shadow-neo);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes scrollLine{0%{left:-100%;}100%{left:100%;}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s,transform .75s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){
+nav{padding:18px 24px;}.nav-links{display:none;}
+section{padding:72px 24px;}#hero{padding:110px 24px 60px;}.hero-stats{display:none;}
+.services-grid,.testimonials-grid,.clients-featured{grid-template-columns:1fr;}
+.services-header{flex-direction:column;gap:16px;}
+.work-item.large,.work-item.small,.work-item.third{grid-column:span 12;}
+.case-card{grid-template-columns:1fr;}.case-card:nth-child(even){direction:ltr;}
+.process-steps{grid-template-columns:1fr 1fr;}.process-step::after{display:none;}
+.about-inner{grid-template-columns:1fr;}
+.logo-wall{grid-template-columns:repeat(3,1fr);}
+.footer-top{flex-direction:column;gap:32px;}.footer-links{flex-direction:column;gap:24px;}
+}
+
+#process{background:var(--surface-deep);}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:68px;}
+.process-step{background:var(--surface);border-radius:16px;padding:34px 26px;box-shadow:var(--shadow-neo);position:relative;transition:box-shadow .2s ease;}
+.process-step:hover{box-shadow:var(--shadow-neo-inset);}
+.process-step::after{display:none;}
+.process-step:last-child::after{display:none;}
+.puzzle-badge{width:44px;height:44px;background:var(--surface-deep);border-radius:12px;box-shadow:var(--shadow-neo-inset);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;}.badge-num{font-size:.82rem;font-weight:700;color:var(--text-dim);z-index:1;}
+.step-name{font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:10px;}
+.step-desc{font-size:.8rem;line-height:1.8;color:var(--text-muted);}
+
+/* DARK MODE ONLY SECTION OVERRIDES */
+body:not(.light) #hero{background:#1D2129;}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:140px 56px 80px;position:relative;overflow:visible;text-align:center;}
+body:not(.light) #hero .hero-title{color:#E0E5EC;}
+body:not(.light) #hero .hero-sub{color:#A3B1C6;}
+body:not(.light) #hero .hero-scroll-label{color:#5A6478;}
+body:not(.light) #hero .neo-scroll{background:#1D2129;box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}
+body:not(.light) #hero .neo-scroll-ball{background:#5A6478;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #hero .hero-btn-primary{background:#1D2129;color:#5A6478;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #hero .hero-btn-primary:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#E0E5EC;}
+body:not(.light) #hero .hero-btn-showreel-icon{background:#1D2129;color:#5A6478;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #hero .hero-btn-showreel:hover .hero-btn-showreel-icon{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#E0E5EC;}
+body:not(.light) #hero .hero-btn-showreel-label{color:#5A6478;}
+body:not(.light) #hero .hero-btn-showreel:hover .hero-btn-showreel-label{color:#E0E5EC;}
+body:not(.light) #hero .hero-btn-showreel-sub{color:#5A6478;}
+body:not(.light) #services{background:#1D2129;}
+body:not(.light) #services .section-tag{color:#5A6478;}
+body:not(.light) #services .section-title{color:#E0E5EC;}
+body:not(.light) #services .services-intro{color:#A3B1C6;}
+body:not(.light) #services .service-card{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #services .service-card:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}body:not(.light) #services .service-card:hover .service-num{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#A3B1C6;}body:not(.light) #services .service-card:hover .tag{box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#A3B1C6;}
+body:not(.light) #services .service-card:hover .service-name{color:#E0E5EC;}
+body:not(.light) #services .service-card:hover .service-desc{color:#A3B1C6;}
+body:not(.light) #services .service-num{background:#0E1016;box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#5A6478;}
+body:not(.light) #services .service-name{color:#A3B1C6;}
+body:not(.light) #services .service-desc{color:#5A6478;}
+body:not(.light) #services .tag{background:#1D2129;box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#5A6478;border:none;}body:not(.light) #services .tag:hover{box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#E0E5EC;}
+body:not(.light) #work{background:#181B21;}
+body:not(.light) #work .section-tag{color:#5A6478;}
+body:not(.light) #work .section-title{color:#E0E5EC;}
+body:not(.light) #work .work-header .btn-ghost{color:#5A6478;}
+body:not(.light) #work .work-header .btn-ghost:hover{color:#E0E5EC;}
+body:not(.light) #work .filter-btn{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;color:#5A6478;}
+body:not(.light) #work .filter-btn:hover,body:not(.light) #work .filter-btn.active{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;color:#E0E5EC;}
+body:not(.light) #work .work-item{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;}
+body:not(.light) #work .work-item:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;}
+body:not(.light) #work .work-client{color:#5A6478;}
+body:not(.light) #work .work-title{color:#A3B1C6;}
+body:not(.light) #work .work-type{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;color:#5A6478;}
+body:not(.light) #casestudies{background:#1D2129;}
+body:not(.light) #casestudies .section-tag{color:#5A6478;}
+body:not(.light) #casestudies .section-title{color:#E0E5EC;}
+body:not(.light) #casestudies>p{color:#A3B1C6;}
+body:not(.light) #casestudies .case-card{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #casestudies .case-visual{background:#13161C;}
+body:not(.light) #casestudies .metric-card{background:#13161C;box-shadow:6px 6px 12px #0D0F13,-6px -6px 12px #1A1E24;}
+body:not(.light) #casestudies .metric-val{color:#E0E5EC;}
+body:not(.light) #casestudies .metric-label{color:#A3B1C6;}
+body:not(.light) #casestudies .case-brand{color:#5A6478;}
+body:not(.light) #casestudies .case-title{color:#E0E5EC;}
+body:not(.light) #casestudies .case-body{color:#A3B1C6;}
+body:not(.light) #casestudies .result-item{color:#A3B1C6;}
+body:not(.light) #casestudies .result-dot{background:#E0E5EC;}
+body:not(.light) #casestudies .btn-primary{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#5A6478;}
+body:not(.light) #casestudies .btn-primary:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#E0E5EC;}
+body:not(.light) #clients{background:#181B21;}
+body:not(.light) #clients .section-tag{color:#5A6478;}
+body:not(.light) #clients .section-title{color:#E0E5EC;}
+body:not(.light) #clients .clients-divider{color:#5A6478;}
+body:not(.light) #clients .featured-client-card{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;}
+body:not(.light) #clients .featured-client-card:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;}
+body:not(.light) #clients .logo-card{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;}
+body:not(.light) #clients .logo-card:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;}
+body:not(.light) #testimonials{background:#1D2129;}
+body:not(.light) #testimonials .section-tag{color:#5A6478;}
+body:not(.light) #testimonials .section-title{color:#E0E5EC;}
+body:not(.light) #testimonials .testi-card{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #testimonials .testi-card:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}
+body:not(.light) #testimonials .testi-card:hover .testi-name{color:#E0E5EC;}
+body:not(.light) #testimonials .testi-card:hover .testi-quote{color:#A3B1C6;}
+body:not(.light) #testimonials .testi-video{background:#13161C;}
+body:not(.light) #testimonials .testi-quote{color:#5A6478;}
+body:not(.light) #testimonials .testi-author{color:#5A6478;}
+body:not(.light) #testimonials .testi-name{color:#A3B1C6;}
+body:not(.light) #process{background:#181B21;}
+body:not(.light) .process-step{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;}
+body:not(.light) .process-step:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;}
+body:not(.light) .process-step::after{background:#181B21;box-shadow:inset 2px 2px 5px #0E1016,inset -2px -2px 5px #222730;}
+body:not(.light) .puzzle-badge{background:#0E1016;box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;}body:not(.light) .badge-num{color:#5A6478;}
+body:not(.light) .process-step .step-name{color:#E0E5EC;}
+body:not(.light) .process-step .step-desc{color:#A3B1C6;}
+body:not(.light) #process .section-tag{color:#5A6478;}
+body:not(.light) #process .section-title{color:#E0E5EC;}
+body:not(.light) #about{background:#1D2129;}
+body:not(.light) #about .section-tag{color:#5A6478;}
+body:not(.light) #about .about-name{color:#E0E5EC;}
+body:not(.light) #about .about-role{color:#5A6478;}
+body:not(.light) #about .about-bio{color:#A3B1C6;}
+body:not(.light) #about .about-photo{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) #about .about-photo-label{color:#5A6478;}
+body:not(.light) #about .tag{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#5A6478;border:none;}
+body:not(.light) #about .btn-primary{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#5A6478;}
+body:not(.light) #about .btn-primary:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#E0E5EC;}
+body:not(.light) #cta{background:#181B21;}
+body:not(.light) #cta .cta-title{color:#E0E5EC;}
+body:not(.light) #cta .cta-sub{color:#A3B1C6;}
+body:not(.light) #cta .contact-btn{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;color:#5A6478;}
+body:not(.light) #cta .contact-btn:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;color:#E0E5EC;}
+body:not(.light) .theme-float{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;}
+body:not(.light) .theme-float:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}
+body:not(.light) .theme-float:hover .theme-float-label{color:#E0E5EC;}
+body:not(.light) .theme-toggle{background:#13161C;box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;}
+body:not(.light) .theme-knob{background:#5A6478;}
+body:not(.light) .theme-float-label{color:#5A6478;}
+
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="intro-loader">
+  <video autoplay muted playsinline id="intro-video"><source src="Animated_Vizora_logo.mp4" type="video/mp4"></video>
+</div>
+
+<nav>
+  <div class="nav-logo-wrap">
+    <a href="#" style="text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Vizora</a>
+  </div>
+  <div class="nav-center-links">
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#casestudies">Results</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+  <div class="nav-right-cta">
+    <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Let's Talk <span style="font-weight:700;font-size:.85rem;">↗</span></button>
+  </div>
+</nav>
+
+<!-- THEME TOGGLE — below nav, right aligned -->
+<div class="theme-float" id="themeFloat">
+  <button class="theme-toggle" id="themeToggle"><div class="theme-knob" id="themeKnob">🌙</div></button>
+  <span class="theme-float-label" id="themeLabel">Dark Mode</span>
+</div>
+
+<section id="hero">
+  <div class="hero-left">
+    <video class="hero-logo" autoplay muted loop playsinline><source src="Animated_Vizora_logo.mp4" type="video/mp4"></video>
+    <h1 class="hero-title">Hello. We're Vizora Studios.</h1>
+    <p class="hero-sub">We grow brands through video content, personal brand strategy, and social media management. Scroll down to see some.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="hero-btn-primary">Explore Our Work ↗</a>
+      <a href="#" class="hero-btn-showreel">
+        <div class="hero-btn-showreel-icon">▶</div>
+        <div class="hero-btn-showreel-text">
+          <span class="hero-btn-showreel-label">Watch Showreel</span>
+          <span class="hero-btn-showreel-sub">2 min</span>
+        </div>
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll-label">Scroll to explore</span>
+      <div class="neo-scroll"><div class="neo-scroll-ball"></div></div>
+    </div>
+  </div></section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">VSL Editing<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Personal Brand Growth<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Instagram Reels<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Social Media Management<span class="marquee-dot"></span></div>
+    <div class="marquee-item">AI Video Editing<span class="marquee-dot"></span></div>
+    <div class="marquee-item">YouTube Shorts<span class="marquee-dot"></span></div>
+    <div class="marquee-item">SaaS Videos<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Brand Strategy<span class="marquee-dot"></span></div>
+    <div class="marquee-item">VSL Editing<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Personal Brand Growth<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Instagram Reels<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Social Media Management<span class="marquee-dot"></span></div>
+    <div class="marquee-item">AI Video Editing<span class="marquee-dot"></span></div>
+    <div class="marquee-item">YouTube Shorts<span class="marquee-dot"></span></div>
+    <div class="marquee-item">SaaS Videos<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Brand Strategy<span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="services-header reveal">
+    <div><p class="section-tag">What We Do</p><h2 class="section-title">Our Services</h2></div>
+    <p class="services-intro">We don't just edit videos. We build systems that grow your brand, generate leads, and turn viewers into customers.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div><span class="service-icon">🎬</span>
+      <h3 class="service-name">Video Production & Editing</h3>
+      <p class="service-desc">From raw footage to a polished final cut. VSLs, reels, YouTube content, SaaS explainers, AI-enhanced edits — everything crafted to perform, not just look good.</p>
+      <div class="service-tags"><span class="tag">Vsl</span><span class="tag">Reels</span><span class="tag">YouTube</span><span class="tag">AI Editing</span><span class="tag">SaaS</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div><span class="service-icon">🚀</span>
+      <h3 class="service-name">Personal Brand Building</h3>
+      <p class="service-desc">You have a business but no social presence. We understand your goals, build a 3–6 month content roadmap, write scripts, produce content, and manage your accounts to grow your audience.</p>
+      <div class="service-tags"><span class="tag">Roadmap</span><span class="tag">Scripting</span><span class="tag">Account Management</span><span class="tag">Growth</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div><span class="service-icon">📣</span>
+      <h3 class="service-name">Social Media & Ad Strategy</h3>
+      <p class="service-desc">You have a product or a marketing problem. We solve it — advise on what to record, write the script, produce the video, and run it through the right channels to drive real results.</p>
+      <div class="service-tags"><span class="tag">Strategy</span><span class="tag">Ad Creative</span><span class="tag">Instagram</span><span class="tag">TikTok</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div><span class="service-icon">✨</span>
+      <h3 class="service-name">Motion Graphics & AI</h3>
+      <p class="service-desc">Kinetic typography, animated logos, AI-enhanced footage and data visualizations that elevate your content from good to unforgettable.</p>
+      <div class="service-tags"><span class="tag">After Effects</span><span class="tag">Motion</span><span class="tag">AI Tools</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">05</div><span class="service-icon">🎯</span>
+      <h3 class="service-name">High-Ticket Sales Content</h3>
+      <p class="service-desc">Specialized content for coaches, consultants and high-ticket sellers. VSLs, testimonials, and social proof videos engineered to convert premium audiences.</p>
+      <div class="service-tags"><span class="tag">Vsl</span><span class="tag">Testimonials</span><span class="tag">Funnels</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">06</div><span class="service-icon">🎨</span>
+      <h3 class="service-name">Color & Sound Design</h3>
+      <p class="service-desc">Professional color grading and sound design that gives your footage a cinematic finish — the invisible layer that makes everything feel premium.</p>
+      <div class="service-tags"><span class="tag">DaVinci</span><span class="tag">Color Grade</span><span class="tag">Sound Design</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="work-header reveal">
+    <div><p class="section-tag">Selected Work</p><h2 class="section-title">Our Projects</h2></div>
+    <a href="#cta" class="btn-ghost">Let's Talk ↗ <span class="arrow">→</span></a>
+  </div>
+  <div class="filter-tabs reveal">
+    <button class="filter-btn active" data-filter="all">All Work</button>
+    <button class="filter-btn" data-filter="reel">Reels</button>
+    <button class="filter-btn" data-filter="vsl">Vsl</button>
+    <button class="filter-btn" data-filter="youtube">YouTube</button>
+    <button class="filter-btn" data-filter="saas">SaaS</button>
+    <button class="filter-btn" data-filter="realestate">Real State</button>
+    <button class="filter-btn" data-filter="aiugc">AI UGC</button>
+    <button class="filter-btn" data-filter="podcast">Podcast</button>
+    <button class="filter-btn" data-filter="ai">AI Edits</button>
+  </div>
+        <div class="work-grid" id="workGrid">
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/bgFRfr6_w98?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/bgFRfr6_w98/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 1</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/IG6BgwuubMg?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/IG6BgwuubMg/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 2</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/n4RRVZ-CFTM?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/n4RRVZ-CFTM/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 3</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/kfymlJEfFbg?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/kfymlJEfFbg/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 4</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/6sSD0Q_imjY?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/6sSD0Q_imjY/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 5</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/bfowgd_KmPc?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/bfowgd_KmPc/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 6</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/L9INa_GoWSY?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/L9INa_GoWSY/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 7</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/7Rmh1iRRcJI?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/7Rmh1iRRcJI/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 8</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item reel-card reveal" data-type="reel">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/q6ORw7E9Oug?autoplay=1')" style="cursor:pointer;aspect-ratio:9/16;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/q6ORw7E9Oug/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Reel 9</div></div>
+        <span class="work-type">Reel</span>
+      </div>
+    </div>
+    <div class="work-item large reveal" data-type="vsl">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/JMgZ6Ufxhng?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/JMgZ6Ufxhng/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">VSL 1</div></div>
+        <span class="work-type">Vsl</span>
+      </div>
+    </div>
+    <div class="work-item small reveal" data-type="vsl">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/72iFeUl6HvM?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/72iFeUl6HvM/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">VSL 2</div></div>
+        <span class="work-type">Vsl</span>
+      </div>
+    </div>
+    <div class="work-item small reveal" data-type="vsl">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/6WEQ1TMYCII?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/6WEQ1TMYCII/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">VSL 3</div></div>
+        <span class="work-type">Vsl</span>
+      </div>
+    </div>
+    <div class="work-item large reveal" data-type="vsl">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/WGESMS5BG1E?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/WGESMS5BG1E/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">VSL 4</div></div>
+        <span class="work-type">Vsl</span>
+      </div>
+    </div>
+    <div class="work-item large reveal" data-type="vsl">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/WJfY6ny8pWA?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/WJfY6ny8pWA/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">VSL 5</div></div>
+        <span class="work-type">Vsl</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/wAetN8Z4nzg?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/wAetN8Z4nzg/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 1</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/Jj3OrAGe5UM?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/Jj3OrAGe5UM/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 2</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/YA8CUGYvviY?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/YA8CUGYvviY/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 3</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item large reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/NaNrZLrZ818?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/NaNrZLrZ818/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 4</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item small reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/DkFzxlHJM4w?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/DkFzxlHJM4w/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 5</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/ehnK0eBcNgI?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/ehnK0eBcNgI/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 6</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/rJ9-CWle3HM?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/rJ9-CWle3HM/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 7</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="youtube">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/m44VHcKimUI?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/m44VHcKimUI/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">YouTube 8</div></div>
+        <span class="work-type">Youtube</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="saas">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/zJcpbKdTkj0?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/zJcpbKdTkj0/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">SaaS 1</div></div>
+        <span class="work-type">Saas</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="saas">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/tumvOuGpxX0?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/tumvOuGpxX0/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">SaaS 2</div></div>
+        <span class="work-type">Saas</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="saas">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/HjcnFINoJGA?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/HjcnFINoJGA/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">SaaS 3</div></div>
+        <span class="work-type">Saas</span>
+      </div>
+    </div>
+    <div class="work-item large reveal" data-type="ai">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/D1LNd8zzQ6E?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/D1LNd8zzQ6E/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">AI Edit</div></div>
+        <span class="work-type">Ai</span>
+      </div>
+    </div>
+    <div class="work-item small reveal" data-type="aiugc">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/WNAioFYMWww?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/WNAioFYMWww/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">AI UGC</div></div>
+        <span class="work-type">Aiugc</span>
+      </div>
+    </div>
+    <div class="work-item large reveal" data-type="realestate">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/tXr7dTom1GU?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/tXr7dTom1GU/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Real Estate 1</div></div>
+        <span class="work-type">Realestate</span>
+      </div>
+    </div>
+    <div class="work-item small reveal" data-type="realestate">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/Y04vm53wZk4?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/Y04vm53wZk4/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Real Estate 2</div></div>
+        <span class="work-type">Realestate</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="podcast">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/AnO9W9Woc08?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/AnO9W9Woc08/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Podcast 1</div></div>
+        <span class="work-type">Podcast</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="podcast">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/zo8zkWroS9s?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/zo8zkWroS9s/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Podcast 2</div></div>
+        <span class="work-type">Podcast</span>
+      </div>
+    </div>
+    <div class="work-item third reveal" data-type="podcast">
+      <div class="work-thumb" onclick="openVideo('https://www.youtube.com/embed/UpQ4y0VSVho?autoplay=1')" style="cursor:pointer;">
+        <div class="work-thumb-bg" style="background-image:url('https://img.youtube.com/vi/UpQ4y0VSVho/hqdefault.jpg');"></div>
+        <div class="work-overlay"></div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="work-meta">
+        <div><div class="work-client">Vizora Studios</div><div class="work-title">Podcast 3</div></div>
+        <span class="work-type">Podcast</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="casestudies">
+  <p class="section-tag reveal">Results</p>
+  <h2 class="section-title reveal">We Got Numbers Too</h2>
+  <p class="reveal" style="max-width:460px;font-size:.9rem;line-height:1.8;color:var(--text-muted);margin-top:12px;">It's not all pretty edits. Our work performs. Here are real results from real projects.</p>
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <div class="case-visual">
+        <div class="case-bg-num">01</div>
+        <div class="case-metrics-grid">
+          <div class="metric-card"><div class="metric-val">12M</div><div class="metric-label">Total Views</div></div>
+          <div class="metric-card"><div class="metric-val">340%</div><div class="metric-label">ROI Increase</div></div>
+          <div class="metric-card"><div class="metric-val">60K</div><div class="metric-label">New Followers</div></div>
+          <div class="metric-card"><div class="metric-val">4.2x</div><div class="metric-label">Engagement</div></div>
+        </div>
+      </div>
+      <div class="case-content">
+        <div class="case-brand">NovaBrand Co. — Brand Campaign</div>
+        <h3 class="case-title">From Zero to Viral in 90 Days</h3>
+        <p class="case-body">NovaBrand launched with no social presence and a tight deadline. We built a full content strategy and produced 24 pieces of video content in 8 weeks — from a hero brand film to weekly reels.</p>
+        <div class="case-results">
+          <div class="result-item"><div class="result-dot"></div><span>12M organic views with zero paid promotion in the first 60 days</span></div>
+          <div class="result-item"><div class="result-dot"></div><span>Sales increased 340% month-over-month during campaign period</span></div>
+          <div class="result-item"><div class="result-dot"></div><span>Brand grew from 0 to 60K followers across Instagram and TikTok</span></div>
+        </div>
+        <a href="#cta" class="btn-primary" style="align-self:flex-start;">Get These Results →</a>
+      </div>
+    </div>
+    <div class="case-card reveal">
+      <div class="case-visual">
+        <div class="case-bg-num">02</div>
+        <div class="case-metrics-grid">
+          <div class="metric-card"><div class="metric-val">$2.1M</div><div class="metric-label">Revenue Driven</div></div>
+          <div class="metric-card"><div class="metric-val">38%</div><div class="metric-label">Conversion Rate</div></div>
+          <div class="metric-card"><div class="metric-val">2.4M</div><div class="metric-label">Video Views</div></div>
+          <div class="metric-card"><div class="metric-val">6x</div><div class="metric-label">ROAS</div></div>
+        </div>
+      </div>
+      <div class="case-content">
+        <div class="case-brand">HighClose — VSL Campaign</div>
+        <h3 class="case-title">One Video. $2.1M in Sales.</h3>
+        <p class="case-body">A high-ticket business coach needed a VSL that could sell a $5,000 program cold. We scripted, structured, and edited a 22-minute VSL with every cut, caption, and hook designed to keep people watching and buying.</p>
+        <div class="case-results">
+          <div class="result-item"><div class="result-dot"></div><span>38% opt-in rate on cold traffic — industry average is 8%</span></div>
+          <div class="result-item"><div class="result-dot"></div><span>Generated $2.1M in program sales within 4 months of launch</span></div>
+          <div class="result-item"><div class="result-dot"></div><span>6x return on ad spend across all paid channels</span></div>
+        </div>
+        <a href="#cta" class="btn-primary" style="align-self:flex-start;">Get These Results →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="clients">
+  <p class="section-tag reveal">Who We've Worked With</p>
+  <h2 class="section-title reveal">Our Clients</h2>
+  <div class="clients-featured">
+    <div class="featured-client-card reveal">
+      <div class="fc-logo">Novabrand Co.</div>
+      <p class="fc-quote">"Vizora didn't just edit our videos — they understood our brand on a level that made every frame feel intentional. Our best-performing content ever."</p>
+      <div class="fc-author">Sarah Chen — CMO, NovaBrand Co.</div>
+      <div class="fc-result">
+        <div><div class="fc-stat-val">12M</div><div class="fc-stat-label">Views</div></div>
+        <div><div class="fc-stat-val">60K</div><div class="fc-stat-label">Followers Gained</div></div>
+      </div>
+    </div>
+    <div class="featured-client-card reveal">
+      <div class="fc-logo">Techflow SaaS</div>
+      <p class="fc-quote">"We tried 3 other editors before Vizora. No one understood the product the way they did. Our explainer video increased trial signups by 210%."</p>
+      <div class="fc-author">James Park — Head of Marketing, TechFlow</div>
+      <div class="fc-result">
+        <div><div class="fc-stat-val">210%</div><div class="fc-stat-label">Trial Signups</div></div>
+        <div><div class="fc-stat-val">4.8★</div><div class="fc-stat-label">Client Rating</div></div>
+      </div>
+    </div>
+    <div class="featured-client-card reveal">
+      <div class="fc-logo">Aura Fitness</div>
+      <p class="fc-quote">"Within 6 weeks, our reels were consistently hitting 500K+ views. Gym membership inquiries tripled. Insane ROI from working with Vizora."</p>
+      <div class="fc-author">Priya Nair — Founder, Aura Fitness</div>
+      <div class="fc-result">
+        <div><div class="fc-stat-val">500K+</div><div class="fc-stat-label">Views/Reel</div></div>
+        <div><div class="fc-stat-val">3x</div><div class="fc-stat-label">Inquiries</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="clients-divider reveal">— Brands we've worked with —</p>
+  <div class="logo-wall">
+    <div class="logo-card reveal"><div class="logo-text">NOVABRAND</div></div>
+    <div class="logo-card reveal"><div class="logo-text">TECHFLOW</div></div>
+    <div class="logo-card reveal"><div class="logo-text"<>Aura Fitness</div></div>
+    <div class="logo-card reveal"><div class="logo-text">MINDFULMD</div></div>
+    <div class="logo-card reveal"><div class="logo-text">ECOWEAR</div></div>
+    <div class="logo-card reveal"><div class="logo-text">HIGHCLOSE</div></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <p class="section-tag reveal">What Clients Say</p>
+  <h2 class="section-title reveal">Video Testimonials</h2>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="testi-video"><div class="testi-video-bg" style="background:linear-gradient(135deg,#1a1a2e,#16213e);"></div><div class="testi-play">▶</div></div>
+      <div class="testi-body">
+        <p class="testi-quote">"Working with Vizora completely transformed how our brand looks online. The quality is on another level — fast, clean, and always on brand."</p>
+        <div class="testi-author">CMO — NovaBrand Co.</div>
+        <div class="testi-name">Sarah Chen</div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-video"><div class="testi-video-bg" style="background:linear-gradient(135deg,#2d1b69,#11998e);"></div><div class="testi-play">▶</div></div>
+      <div class="testi-body">
+        <p class="testi-quote">"The personal brand roadmap Mahadi built for me was exactly what I needed. 3 months in and my Instagram went from 2K to 28K followers organically."</p>
+        <div class="testi-author">Business Coach</div>
+        <div class="testi-name">Daniel Osei</div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-video"><div class="testi-video-bg" style="background:linear-gradient(135deg,#134e5e,#71b280);"></div><div class="testi-play">▶</div></div>
+      <div class="testi-body">
+        <p class="testi-quote">"Our SaaS explainer increased trial sign-ups by 210% in the first month. Vizora understood our product better than any editor we've ever hired."</p>
+        <div class="testi-author">Head of Marketing — TechFlow</div>
+        <div class="testi-name">James Park</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <p class="section-tag reveal">How We Work</p>
+  <h2 class="section-title reveal">The Process</h2>
+  <div class="puzzle-container reveal">
+    <div class="puzzle-board">
+
+      <div class="puzzle-quadrant tl">
+        <div class="puzzle-badge"><span class="badge-num">01</span></div>
+        <h3 class="step-name">Discovery</h3>
+        <p class="step-desc">Deep-dive into your brand, goals, and audience. Clarity before content.</p>
+      </div>
+      <div class="puzzle-quadrant tr">
+        <div class="puzzle-badge"><span class="badge-num">02</span></div>
+        <h3 class="step-name">Strategy</h3>
+        <p class="step-desc">Content roadmap tied to specific business outcomes — views, leads, sales.</p>
+      </div>
+      <div class="puzzle-quadrant bl">
+        <div class="puzzle-badge"><span class="badge-num">03</span></div>
+        <h3 class="step-name">Production</h3>
+        <p class="step-desc">Every frame crafted — editing, motion, color, and sound dialed in.</p>
+      </div>
+      <div class="puzzle-quadrant br">
+        <div class="puzzle-badge"><span class="badge-num">04</span></div>
+        <h3 class="step-name">Deliver & Scale</h3>
+        <p class="step-desc">Final cut + revisions. Track and optimize based on real results.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-inner">
+    <div class="about-photo reveal">
+      <img src="Instagram_DP.jpg" alt="Mahadi Hasan" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="about-photo-label">Mahadi — Founder, Vizora Studios</div>
+    </div>
+    <div class="about-content reveal">
+      <p class="section-tag">The Person Behind It</p>
+      <h2 class="about-name">Mahadi Hasan</h2>
+      <p class="about-role">Founder & Creative Director — Vizora Studios</p>
+      <p class="about-bio">I started editing videos because I liked the feeling of taking something raw and making it actually land. That feeling never really left. A few years later, I'm running Vizora Studios out of Dhaka, working with people building their own thing — coaches, founders, creators who need their content to look as sharp as their ideas. I care about pacing, attention, and not wasting anyone's first three seconds. Outside of the timeline, I'm just trying to build something that outlasts any one client or platform.</p>
+      <div class="about-skills">
+        <a href="https://www.instagram.com/vizora.studios/" class="social-pill" target="_blank">Instagram</a><a href="#" class="social-pill">LinkedIn</a><a href="#" class="social-pill">YouTube</a><a href="https://www.fiverr.com/s/pdDXvRy" class="social-pill" target="_blank">Fiverr</a>
+      </div>
+      <a href="#cta" class="btn-primary">Work With Me →</a>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Let's Build Together</h2>
+    <p class="cta-sub">Tell us about your project and we'll get back to you within 24 hours.</p>
+    <div class="cta-form-card">
+      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE">
+        <input type="hidden" name="subject" value="New Inquiry — Vizora Studios">
+        <div class="cf-row">
+          <div class="cf-group">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="cf-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-group">
+            <label>Company / Brand</label>
+            <input type="text" name="company" placeholder="Optional">
+          </div>
+          <div class="cf-group">
+            <label>Service You Need</label>
+            <select name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Video Production & Editing</option>
+              <option>Personal Brand Building</option>
+              <option>Social Media & Ad Strategy</option>
+              <option>Motion Graphics & AI</option>
+              <option>High-Ticket Sales Content</option>
+              <option>Color & Sound Design</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+        </div>
+        <div class="cf-group cf-full">
+          <label>Tell us about your project</label>
+          <textarea name="message" rows="4" placeholder="What are you trying to achieve? Any deadlines or details that would help." required></textarea>
+        </div>
+        <button type="submit" class="cf-submit">Send Message <span style="font-weight:700;">↗</span></button>
+        <p class="cf-status" id="cfStatus"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Vizora Studios</div>
+      <p class="footer-tagline">We grow brands through premium video content, strategy, and social media management.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Video Editing</a></li>
+          <li><a href="#">Personal Brand</a></li>
+          <li><a href="#">Social Media</a></li>
+          <li><a href="#">VSL Production</a></li>
+          <li><a href="#">Motion Graphics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#casestudies">Case Studies</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Vizora Studios. All rights reserved. Dhaka, Bangladesh.</p>
+    <div class="footer-socials"></div>
+  </div>
+</footer>
+
+<script>
+const loader=document.getElementById('intro-loader'),introVid=document.getElementById('intro-video');
+function dismissLoader(){loader.classList.add('hidden');document.body.style.overflow='';}
+document.body.style.overflow='hidden';
+introVid.addEventListener('ended',dismissLoader);
+setTimeout(dismissLoader,6000);
+
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function animateCursor(){cursor.style.left=mx-5+'px';cursor.style.top=my-5+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';requestAnimationFrame(animateCursor);})();
+document.querySelectorAll('a,button,.work-item,.service-card,.testi-card,.featured-client-card,.logo-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';ring.style.marginLeft='-8px';ring.style.marginTop='-8px';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.marginLeft='0';ring.style.marginTop='0';});
+});
+
+// THEME TOGGLE
+const toggle=document.getElementById('themeToggle'),knob=document.getElementById('themeKnob'),themeLabel=document.getElementById('themeLabel');
+let isLight=localStorage.getItem('vizora-theme')==='light';
+function applyTheme(){document.body.classList.toggle('light',isLight);knob.textContent=isLight?'☀️':'🌙';themeLabel.textContent=isLight?'Light Mode':'Dark Mode';}
+applyTheme();
+toggle.addEventListener('click',()=>{isLight=!isLight;applyTheme();localStorage.setItem('vizora-theme',isLight?'light':'dark');});
+document.getElementById('themeFloat').addEventListener('click',()=>{isLight=!isLight;applyTheme();localStorage.setItem('vizora-theme',isLight?'light':'dark');});
+
+// HERO CANVAS ANIMATION
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.work-item').forEach(item=>{
+      item.style.display=(f==='all'||item.dataset.type===f)?'':'none';
+    });
+  });
+});
+
+const reveals=document.querySelectorAll('.reveal');
+new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);new IntersectionObserver(()=>{}).observe(e.target);}});},{threshold:.1}).observe;
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);}});},{threshold:.1});
+reveals.forEach(el=>obs.observe(el));
+
+</script>
+</body>
+</html>
+<style>
+/* LIGHT MODE SECTION OVERRIDES */
+body.light #work{background:#D4DAE6;}
+body.light #work .section-tag{color:#8896A5;}
+body.light #work .section-title{color:#2D3748;}
+body.light #work .work-header .btn-ghost{color:#8896A5;}
+body.light #work .work-header .btn-ghost:hover{color:#2D3748;}
+body.light #work .filter-btn{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;color:#8896A5;}
+body.light #work .filter-btn:hover,body.light #work .filter-btn.active{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;color:#2D3748;}
+body.light #work .work-item{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;}
+body.light #work .work-item:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;}
+body.light #work .work-client{color:#8896A5;}
+body.light #work .work-title{color:#4A5568;}
+body.light #work .work-type{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;color:#8896A5;}
+
+body.light #clients{background:#D4DAE6;}
+body.light #clients .section-tag{color:#8896A5;}
+body.light #clients .section-title{color:#2D3748;}
+body.light #clients .clients-divider{color:#8896A5;}
+body.light #clients .featured-client-card{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;}
+body.light #clients .featured-client-card:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;}
+body.light #clients .logo-card{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;}
+body.light #clients .logo-card:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;}
+
+body.light #process{background:#D4DAE6;}
+body.light #process .section-tag{color:#8896A5;}
+body.light #process .section-title{color:#2D3748;}
+body.light .process-step{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;}
+body.light .process-step:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;}
+body.light .process-step::after{background:#D4DAE6;box-shadow:inset 2px 2px 5px #9AA4B8,inset -2px -2px 5px #EDF0F7;}
+body.light .process-step .step-num{color:#8896A5;}
+body.light .process-step .step-name{color:#2D3748;}
+body.light .process-step .step-desc{color:#4A5568;}
+
+body.light #cta{background:#D4DAE6;}
+body.light #cta .cta-title{color:#2D3748;}
+body.light #cta .cta-sub{color:#4A5568;}
+body.light #cta .contact-btn{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;color:#8896A5;border:none;}
+body.light #cta .contact-btn:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;color:#2D3748;}
+</style>
+<style>
+/* LIGHT MODE — E0E5EC sections */
+body.light #hero{background:#E0E5EC;}
+body.light #hero .hero-title{color:#2D3748;}
+body.light #hero .hero-sub{color:#4A5568;}
+body.light #hero .hero-scroll-label{color:#8896A5;}
+body.light #hero .neo-scroll{background:#E0E5EC;box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;}
+body.light #hero .neo-scroll-ball{background:#8896A5;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light #hero .hero-btn-primary{background:#E0E5EC;color:#8896A5;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light #hero .hero-btn-primary:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#2D3748;}
+body.light #hero .hero-btn-showreel-icon{background:#E0E5EC;color:#8896A5;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light #hero .hero-btn-showreel:hover .hero-btn-showreel-icon{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#2D3748;}
+body.light #hero .hero-btn-showreel-label{color:#8896A5;}
+body.light #hero .hero-btn-showreel:hover .hero-btn-showreel-label{color:#2D3748;}
+body.light #hero .hero-btn-showreel-sub{color:#8896A5;}
+
+body.light #services{background:#E0E5EC;}
+body.light #services .section-tag{color:#8896A5;}
+body.light #services .section-title{color:#2D3748;}
+body.light #services .services-intro{color:#4A5568;}
+body.light #services .service-card{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light #services .service-card:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;}body.light #services .service-card:hover .service-num{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;color:#4A5568;}body.light #services .service-card:hover .tag{box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;color:#4A5568;}
+body.light #services .service-card:hover .service-name{color:#2D3748;}
+body.light #services .service-card:hover .service-desc{color:#4A5568;}
+body.light #services .service-num{background:#E0E5EC;box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#8896A5;}
+body.light #services .service-name{color:#4A5568;}
+body.light #services .service-desc{color:#8896A5;}
+body.light #services .tag{background:#E0E5EC;box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#8896A5;border:none;}body.light #services .tag:hover{box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;color:#2D3748;}
+
+body.light #casestudies{background:#E0E5EC;}
+body.light #casestudies .section-tag{color:#8896A5;}
+body.light #casestudies .section-title{color:#2D3748;}
+body.light #casestudies>p{color:#4A5568;}
+body.light #casestudies .case-card{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light #casestudies .case-visual{background:#D4DAE6;}
+body.light #casestudies .metric-card{background:#D4DAE6;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #EDF0F7;}body.light #casestudies .case-visual{background:#D4DAE6;}
+body.light #casestudies .metric-val{color:#2D3748;}
+body.light #casestudies .metric-label{color:#4A5568;}
+body.light #casestudies .case-brand{color:#8896A5;}
+body.light #casestudies .case-title{color:#2D3748;}
+body.light #casestudies .case-body{color:#4A5568;}
+body.light #casestudies .result-item{color:#4A5568;}
+body.light #casestudies .result-dot{background:#2D3748;}
+body.light #casestudies .btn-primary{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;color:#8896A5;}
+body.light #casestudies .btn-primary:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#2D3748;}
+
+body.light #testimonials{background:#E0E5EC;}
+body.light #testimonials .section-tag{color:#8896A5;}
+body.light #testimonials .section-title{color:#2D3748;}
+body.light #testimonials .testi-card{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light #testimonials .testi-card:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;}
+body.light #testimonials .testi-card:hover .testi-name{color:#2D3748;}
+body.light #testimonials .testi-card:hover .testi-quote{color:#4A5568;}
+body.light #testimonials .testi-video{background:#C8CED9;}
+body.light #testimonials .testi-quote{color:#8896A5;}
+body.light #testimonials .testi-author{color:#8896A5;}
+body.light #testimonials .testi-name{color:#4A5568;}
+
+body.light .theme-float{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;}
+body.light .theme-float:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;}
+body.light .theme-float:hover .theme-float-label{color:#2D3748;}
+body.light .theme-toggle{background:#D4DAE6;box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;}
+body.light .theme-knob{background:#8896A5;}
+body.light .theme-float-label{color:#8896A5;}
+</style>
+<style>
+body.light .puzzle-badge{background:#C4CAD6;box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;}
+
+body.light .badge-num{color:#8896A5;}
+</style>
+<style>
+.puzzle-container{margin-top:64px;}
+.puzzle-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:700px;margin:0 auto;}
+.puzzle-cell{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;transition:box-shadow .2s ease;position:relative;aspect-ratio:1;}
+.puzzle-cell:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;}
+.puzzle-cell:hover .puzzle-badge{box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;}
+.puzzle-inner{padding:44px 40px;display:flex;flex-direction:column;height:100%;}
+body.light .puzzle-cell{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;}
+body.light .puzzle-cell:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;}
+body.light .puzzle-cell:hover .puzzle-badge{box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;}
+</style>
+<style>
+.puzzle-container{margin-top:64px;}
+.puzzle-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+  max-width:680px;
+  margin:0 auto;
+  background:transparent;
+}
+.puzzle-piece{
+  position:relative;
+  aspect-ratio:1;
+  cursor:none;
+  transition:filter .2s ease;
+}
+.puzzle-piece:hover{filter:brightness(1.08);}
+.puzzle-shape{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  color:#181B21;
+  filter:drop-shadow(4px 4px 8px #0E1016) drop-shadow(-4px -4px 8px #222730);
+  transition:filter .2s ease;
+}
+.puzzle-piece:hover .puzzle-shape{
+  filter:drop-shadow(2px 2px 4px #0E1016) drop-shadow(-2px -2px 4px #222730) brightness(1.05);
+}
+.puzzle-inner{
+  position:relative;
+  z-index:2;
+  padding:44px 40px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+body.light .puzzle-shape{
+  color:#D4DAE6;
+  filter:drop-shadow(4px 4px 8px #9AA4B8) drop-shadow(-4px -4px 8px #EDF0F7);
+}
+body.light .puzzle-piece:hover .puzzle-shape{
+  filter:drop-shadow(2px 2px 4px #9AA4B8) drop-shadow(-2px -2px 4px #EDF0F7) brightness(1.03);
+}
+</style>
+<style>
+.puzzle-container{margin-top:64px;}
+.puzzle-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+  max-width:660px;
+  margin:0 auto;
+}
+.puzzle-piece{
+  position:relative;
+  aspect-ratio:1;
+  cursor:none;
+  overflow:visible;
+}
+.puzzle-shape{
+  position:absolute;
+  top:-12%;
+  left:-12%;
+  width:124%;
+  height:124%;
+  color:#181B21;
+  filter:drop-shadow(3px 3px 6px #0E1016) drop-shadow(-3px -3px 6px #222730);
+  transition:filter .2s ease;
+  pointer-events:none;
+}
+.puzzle-piece:hover .puzzle-shape{
+  filter:drop-shadow(1px 1px 3px #0E1016) drop-shadow(-1px -1px 3px #222730) drop-shadow(inset 3px 3px 6px #0E1016);
+}
+.puzzle-inner{
+  position:relative;
+  z-index:2;
+  padding:40px 36px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+body.light .puzzle-shape{
+  color:#D4DAE6;
+  filter:drop-shadow(3px 3px 6px #9AA4B8) drop-shadow(-3px -3px 6px #EDF0F7);
+}
+body.light .puzzle-piece:hover .puzzle-shape{
+  filter:drop-shadow(1px 1px 3px #9AA4B8) drop-shadow(-1px -1px 3px #EDF0F7);
+}
+</style>
+<style>
+/* PUZZLE BOARD */
+.puzzle-container{margin-top:64px;}
+.puzzle-board{
+  position:relative;
+  width:100%;
+  max-width:660px;
+  margin:0 auto;
+  background:#181B21;
+  border-radius:32px;
+  box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  overflow:visible;
+  aspect-ratio:1;
+}
+.puzzle-quadrant{
+  position:relative;
+  z-index:2;
+  padding:44px 40px;
+  display:flex;
+  flex-direction:column;
+  cursor:none;
+  background:#181B21;
+  transition:box-shadow .2s ease;
+}
+.puzzle-quadrant:hover{
+  box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;
+  background:#181B21;
+}
+.puzzle-quadrant.tl{border-radius:32px 0 0 0;}
+.puzzle-quadrant.tr{border-radius:0 32px 0 0;}
+.puzzle-quadrant.bl{border-radius:0 0 0 32px;}
+.puzzle-quadrant.br{border-radius:0 0 32px 0;}
+
+/* Puzzle divider lines with deboss shadow feel */
+.puzzle-lines path{
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,0.5)) drop-shadow(0 -1px 2px rgba(255,255,255,0.04));
+}
+
+/* LIGHT MODE */
+body.light .puzzle-board{
+  background:#D4DAE6;
+  box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;
+}
+body.light .puzzle-quadrant{background:#D4DAE6;}
+body.light .puzzle-quadrant:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;background:#D4DAE6;}
+
+/* Quadrant text colors from section overrides already set */
+body.light .puzzle-board .step-name{color:#2D3748;}
+body.light .puzzle-board .step-desc{color:#4A5568;}
+body.light .puzzle-board .puzzle-badge{
+  background:#C4CAD6;
+  box-shadow:inset 4px 4px 8px #9AA4B8,inset -4px -4px 8px #EDF0F7;
+}
+body.light .puzzle-board .badge-num{color:#8896A5;}
+</style>
+<style>
+/* ── PUZZLE BOARD ── */
+.puzzle-container{margin-top:64px;}
+.puzzle-board{
+  position:relative;
+  width:100%;
+  max-width:620px;
+  margin:0 auto;
+  border-radius:28px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  aspect-ratio:1;
+  /* Dark mode default */
+  background:#181B21;
+  box-shadow:8px 8px 20px #0E1016,-8px -8px 20px #222730;
+}
+body.light .puzzle-board{
+  background:#E0E5EC;
+  box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;
+}
+
+/* SVG divider lines */
+.puzzle-lines{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:3;
+  pointer-events:none;
+}
+/* Dark mode line color */
+.puzzle-lines{color:#0E1016;}
+.puzzle-lines path{
+  stroke:currentColor;
+  filter:drop-shadow(0 1px 2px rgba(34,39,48,0.8));
+}
+body.light .puzzle-lines{color:#A3B1C6;}
+body.light .puzzle-lines path{
+  filter:drop-shadow(0 2px 3px #A3B1C6) drop-shadow(0 -1px 2px #FFFFFF);
+}
+
+/* Quadrants */
+.puzzle-quadrant{
+  position:relative;
+  z-index:2;
+  padding:44px 40px;
+  display:flex;
+  flex-direction:column;
+  cursor:none;
+  transition:box-shadow .2s ease;
+}
+.puzzle-quadrant.tl{border-radius:28px 0 0 0;}
+.puzzle-quadrant.tr{border-radius:0 28px 0 0;}
+.puzzle-quadrant.bl{border-radius:0 0 0 28px;}
+.puzzle-quadrant.br{border-radius:0 0 28px 0;}
+
+/* Hover — deboss the quadrant */
+.puzzle-quadrant:hover{box-shadow:inset 4px 4px 10px #0E1016,inset -4px -4px 10px #222730;}
+body.light .puzzle-quadrant:hover{box-shadow:inset 4px 4px 10px #A3B1C6,inset -4px -4px 10px #FFFFFF;}
+
+/* Quadrant text */
+.puzzle-quadrant .step-name{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:1.1rem;font-weight:600;
+  color:#E0E5EC;margin-bottom:10px;
+}
+.puzzle-quadrant .step-desc{
+  font-size:.8rem;line-height:1.8;color:#A3B1C6;
+}
+body.light .puzzle-quadrant .step-name{color:#2D3748;}
+body.light .puzzle-quadrant .step-desc{color:#4A5568;}
+
+/* Badge inside puzzle */
+.puzzle-quadrant .puzzle-badge{
+  width:42px;height:42px;
+  border-radius:12px;
+  background:#181B21;
+  box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+}
+.puzzle-quadrant .badge-num{font-size:.82rem;font-weight:700;color:#5A6478;}
+body.light .puzzle-quadrant .puzzle-badge{
+  background:#E0E5EC;
+  box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;
+}
+body.light .puzzle-quadrant .badge-num{color:#8896A5;}
+</style>
+<style>
+#about .about-skills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+#about .social-pill{font-size:.72rem;font-weight:500;color:var(--text-muted);background:var(--surface);border:none;padding:7px 16px;border-radius:999px;text-decoration:none;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;cursor:none;}
+#about .social-pill:hover{box-shadow:var(--shadow-neo-inset);color:var(--white);}
+body:not(.light) #about .social-pill{background:#1D2129;box-shadow:6px 6px 12px #13161C,-6px -6px 12px #272D36;color:#5A6478;}
+body:not(.light) #about .social-pill:hover{box-shadow:inset 6px 6px 12px #13161C,inset -6px -6px 12px #272D36;color:#E0E5EC;}
+body.light #about .social-pill{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;color:#8896A5;}
+body.light #about .social-pill:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#2D3748;}
+</style>
+<style>
+body.light #about .btn-primary{background:#E0E5EC;box-shadow:6px 6px 12px #A3B1C6,-6px -6px 12px #FFFFFF;color:#8896A5;transition:box-shadow .2s ease,color .2s ease;}
+body.light #about .btn-primary:hover{box-shadow:inset 6px 6px 12px #A3B1C6,inset -6px -6px 12px #FFFFFF;color:#2D3748;}
+</style>
+
+<style>
+/* LIGHT MODE — text color default #8896A5, hover #2D3748 */
+
+/* Hero */
+body.light #hero .hero-btn-primary{color:#8896A5;transition:color .2s ease;}
+body.light #hero .hero-btn-primary:hover{color:#2D3748;}
+body.light #hero .hero-btn-showreel-label{color:#8896A5;transition:color .2s ease;}
+body.light #hero .hero-btn-showreel:hover .hero-btn-showreel-label{color:#2D3748;}
+body.light #hero .hero-btn-showreel-icon{color:#8896A5;transition:color .2s ease;}
+body.light #hero .hero-btn-showreel:hover .hero-btn-showreel-icon{color:#2D3748;}
+
+/* Services */
+body.light #services .service-name{color:#8896A5;transition:color .2s ease;}
+body.light #services .service-desc{color:#8896A5;transition:color .2s ease;}
+body.light #services .service-num{color:#8896A5;transition:color .2s ease;}
+body.light #services .service-card:hover .service-name{color:#2D3748;}
+body.light #services .service-card:hover .service-desc{color:#2D3748;}
+body.light #services .service-card:hover .service-num{color:#2D3748;}
+
+/* Testimonials */
+body.light #testimonials .testi-name{color:#8896A5;transition:color .2s ease;}
+body.light #testimonials .testi-quote{color:#8896A5;transition:color .2s ease;}
+body.light #testimonials .testi-author{color:#8896A5;transition:color .2s ease;}
+body.light #testimonials .testi-card:hover .testi-name{color:#2D3748;}
+body.light #testimonials .testi-card:hover .testi-quote{color:#2D3748;}
+body.light #testimonials .testi-card:hover .testi-author{color:#2D3748;}
+
+/* About */
+body.light #about .about-name{color:#8896A5;transition:color .2s ease;}
+body.light #about .about-role{color:#8896A5;transition:color .2s ease;}
+body.light #about .about-bio{color:#8896A5;transition:color .2s ease;}
+body.light #about .social-pill{color:#8896A5;transition:color .2s ease;}
+body.light #about .social-pill:hover{color:#2D3748;}
+body.light #about .btn-primary{color:#8896A5;transition:color .2s ease;}
+body.light #about .btn-primary:hover{color:#2D3748;}
+</style>
+<style>
+.nav-logo-img{height:36px;width:auto;display:block;filter:none;transition:filter .4s ease;}
+body.light .nav-logo-img{filter:invert(1) brightness(0.3);}
+</style>
+<style>
+.nav-logo-img{height:36px;width:auto;display:block;transition:opacity .4s ease;}
+.nav-logo-dark{display:block;}
+.nav-logo-light{display:none;}
+body.light .nav-logo-dark{display:none;}
+body.light .nav-logo-light{display:block;}
+</style>
+
+
+<style>
+.contact-form{max-width:580px;margin:0 auto;text-align:left;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.cf-group{display:flex;flex-direction:column;gap:8px;}
+.cf-full{margin-bottom:16px;}
+.cf-group label{font-size:.72rem;font-weight:500;color:var(--text-dim);}
+.cf-group input,.cf-group select,.cf-group textarea{background:var(--surface);border:none;border-radius:var(--radius-btn);padding:13px 16px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.85rem;color:var(--heading);box-shadow:var(--shadow-neo-inset);outline:none;transition:box-shadow .2s ease;width:100%;}
+.cf-group input::placeholder,.cf-group textarea::placeholder{color:var(--text-dim);}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{box-shadow:var(--shadow-neo-inset),0 0 0 2px rgba(108,99,255,.25);}
+.cf-group textarea{resize:vertical;min-height:100px;font-family:inherit;}
+.cf-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235A6478'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.cf-submit{width:100%;background:var(--surface);color:var(--text-dim);border:none;padding:15px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.88rem;font-weight:500;cursor:none;border-radius:9999px;box-shadow:var(--shadow-neo);transition:box-shadow .2s ease,color .2s ease;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;}
+.cf-submit:hover{box-shadow:var(--shadow-neo-inset);color:var(--heading);}
+.cf-status{text-align:center;font-size:.8rem;margin-top:14px;min-height:18px;color:var(--text-dim);}
+.cf-status.success{color:#6C63FF;}
+.cf-status.error{color:#e07a7a;}
+body:not(.light) #cta .cf-group input,
+body:not(.light) #cta .cf-group select,
+body:not(.light) #cta .cf-group textarea{background:#181B21;box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;color:#E0E5EC;}
+body:not(.light) #cta .cf-submit{background:#181B21;box-shadow:6px 6px 12px #0E1016,-6px -6px 12px #222730;color:#5A6478;}
+body:not(.light) #cta .cf-submit:hover{box-shadow:inset 6px 6px 12px #0E1016,inset -6px -6px 12px #222730;color:#E0E5EC;}
+body.light #cta .cf-group input,
+body.light #cta .cf-group select,
+body.light #cta .cf-group textarea{background:#D4DAE6;box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;color:#2D3748;}
+body.light #cta .cf-submit{background:#D4DAE6;box-shadow:6px 6px 12px #9AA4B8,-6px -6px 12px #EDF0F7;color:#8896A5;}
+body.light #cta .cf-submit:hover{box-shadow:inset 6px 6px 12px #9AA4B8,inset -6px -6px 12px #EDF0F7;color:#2D3748;}
+@media(max-width:640px){.cf-row{grid-template-columns:1fr;}}
+</style>
+<script>
+const cf = document.getElementById('contactForm');
+const cfStatus = document.getElementById('cfStatus');
+if(cf){cf.addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=cf.querySelector('.cf-submit');
+  const orig=btn.innerHTML;
+  btn.innerHTML='Sending...';
+  cfStatus.textContent='';cfStatus.className='cf-status';
+  try{
+    const r=await fetch(cf.action,{method:'POST',body:new FormData(cf),headers:{'Accept':'application/json'}});
+    const d=await r.json();
+    if(r.status===200){cfStatus.textContent="Thanks! We'll get back to you within 24 hours.";cfStatus.className='cf-status success';cf.reset();}
+    else{cfStatus.textContent=d.message||'Something went wrong. Please email us directly.';cfStatus.className='cf-status error';}
+  }catch(err){cfStatus.textContent='Something went wrong. Please email us directly.';cfStatus.className='cf-status error';}
+  btn.innerHTML=orig;
+});}
+</script>
+
+<style>
+.video-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9000;display:none;align-items:center;justify-content:center;}
+.video-lightbox.active{display:flex;}
+.video-lightbox-inner{position:relative;width:90vw;max-width:900px;aspect-ratio:16/9;}
+.video-lightbox-inner iframe{width:100%;height:100%;border:none;border-radius:12px;}
+.video-lightbox-close{position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;opacity:.7;transition:opacity .2s;}
+.video-lightbox-close:hover{opacity:1;}
+</style>
+<div class="video-lightbox" id="videoLightbox">
+  <div class="video-lightbox-inner">
+    <button class="video-lightbox-close" onclick="closeVideo()">✕</button>
+    <iframe id="videoFrame" src="" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
+<script>
+function openVideo(src){
+  document.getElementById('videoFrame').src = src;
+  document.getElementById('videoLightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo(){
+  document.getElementById('videoFrame').src = '';
+  document.getElementById('videoLightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('videoLightbox').addEventListener('click', function(e){
+  if(e.target === this) closeVideo();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeVideo();
+});
+</script>
+<style>
+/* Reel cards — 9:16 portrait, 3 per row */
+.work-item.reel-item{grid-column:span 4;}
+.work-item.reel-item .work-thumb{aspect-ratio:9/16;}
+
+/* Fix default work-thumb back to 16:9 for all others */
+.work-item:not(.reel-item) .work-thumb{aspect-ratio:16/9;}
+
+@media(max-width:900px){
+  .work-item.reel-item{grid-column:span 12;}
+  .work-item.reel-item .work-thumb{aspect-ratio:9/16;}
+}
+</style>
+<style>
+/* ── PORTFOLIO LAYOUT OVERHAUL ── */
+#work .work-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:20px;
+  align-items:start;
+}
+
+/* Standard sizes */
+.work-item.large{grid-column:span 7;}
+.work-item.small{grid-column:span 5;}
+.work-item.third{grid-column:span 4;}
+
+/* Reels — portrait 9:16, 3 columns */
+.work-item.reel-item{
+  grid-column:span 4;
+  border-radius:14px;
+  overflow:hidden;
+}
+.work-item.reel-item .work-thumb{
+  aspect-ratio:9/16;
+  width:100%;
+}
+
+/* Card polish */
+.work-item{
+  border-radius:14px;
+  overflow:hidden;
+  transition:box-shadow .2s ease;
+}
+.work-item .work-thumb{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.work-item .work-thumb-bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:transform .4s ease;
+}
+.work-item:hover .work-thumb-bg{
+  transform:scale(1.04);
+}
+.work-item .work-meta{
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.work-item .work-title{
+  font-size:1rem;
+  font-weight:600;
+}
+.work-item .work-client{
+  font-size:.65rem;
+  letter-spacing:.08em;
+  margin-bottom:3px;
+}
+.work-item .work-type{
+  font-size:.62rem;
+  padding:4px 12px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
+/* Play button */
+.work-item .play-btn{
+  width:48px;height:48px;
+  background:rgba(255,255,255,0.15);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;
+  z-index:2;
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.2);
+  transition:background .2s ease, transform .2s ease;
+}
+.work-item:hover .play-btn{
+  background:rgba(255,255,255,0.25);
+  transform:scale(1.08);
+}
+
+@media(max-width:900px){
+  .work-item.large,.work-item.small,.work-item.third,.work-item.reel-item{
+    grid-column:span 12;
+  }
+  .work-item.reel-item .work-thumb{aspect-ratio:9/16;max-height:500px;}
+}
+</style>
+<style>
+/* Filter animation */
+.work-item{
+  transition:opacity .35s ease, transform .35s ease, box-shadow .4s ease;
+}
+.work-item.hiding{
+  opacity:0;
+  transform:scale(0.92);
+  pointer-events:none;
+}
+.work-item.showing{
+  animation:workFadeIn .45s ease forwards;
+}
+@keyframes workFadeIn{
+  from{opacity:0;transform:translateY(18px) scale(0.96);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+</style>
+<script>
+// Override the existing filter logic with animated version
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    const items = document.querySelectorAll('.work-item');
+
+    // Phase 1: fade out all visible items that won't match
+    items.forEach(item => {
+      const matches = filter === 'all' || item.dataset.type === filter;
+      if (!matches && item.style.display !== 'none') {
+        item.classList.add('hiding');
+      }
+    });
+
+    // Phase 2: after fade out, swap display and fade in matching
+    setTimeout(() => {
+      items.forEach(item => {
+        const matches = filter === 'all' || item.dataset.type === filter;
+        item.classList.remove('hiding', 'showing');
+        if (matches) {
+          item.style.display = '';
+          requestAnimationFrame(() => item.classList.add('showing'));
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }, 320);
+  });
+});
+</script>
